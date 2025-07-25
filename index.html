@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnapCharm - Polaroid Photo Booth</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="screen1" class="screen">
+    <h1>📸 Welcome to SnapCharm</h1>
+    <p class="subtitle">Create your own cute photo booth collage!</p>
+    <div class="start-panel">
+      <label>Choose Layout:
+        <select id="layout">
+          <option value="column">Straight Strip (1x4)</option>
+          <option value="grid2">2 x 2 Grid</option>
+          <option value="grid3">3 x 2 Grid</option>
+        </select>
+      </label>
+      <label>Number of Shots:
+        <select id="shot-count">
+          <option value="2">2</option>
+          <option value="4" selected>4</option>
+          <option value="6">6</option>
+        </select>
+      </label>
+      <button onclick="showScreen('screen2')">Start Now</button>
+    </div>
+  </div>
+
+  <div id="screen2" class="screen hidden">
+    <h1>📸 Capture Time!</h1>
+    <video id="camera" autoplay></video>
+    <div id="countdown"></div>
+    <div class="controls">
+      <label>Filter:
+        <select id="filter">
+          <option value="none">None</option>
+          <option value="grayscale">Grayscale</option>
+          <option value="sepia">Sepia</option>
+          <option value="vintage">Vintage</option>
+        </select>
+      </label>
+      <button id="booth-btn">Take Photos</button>
+    </div>
+    <canvas id="photo" width="640" height="480"></canvas>
+    <audio id="shutter" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+  </div>
+
+  <div id="screen3" class="screen hidden">
+    <h1>📸 Ta-Da! Here's Your Collage</h1>
+    <div id="collage-wrapper">
+      <div id="collage"></div>
+      <div class="sticker-panel">
+        <label>Add Sticker:
+          <select id="sticker-selector">
+            <option value="">None</option>
+            <option value="🌸">🌸 Flower</option>
+            <option value="🎀">🎀 Bow</option>
+            <option value="✨">✨ Sparkle</option>
+            <option value="😻">😻 Cat</option>
+          </select>
+        </label>
+        <label>Add Caption:
+          <input type="text" id="caption-input" placeholder="Write something cute..." />
+        </label>
+        <button id="apply-caption-sticker">Apply to Collage</button>
+      </div>
+    </div>
+    <button id="download-collage-btn">Download Collage</button>
+    <button onclick="showScreen('screen1')">Retake One More Time</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
